@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://dceosdqwek2hb"]
+
+[ext_resource type="Script" uid="uid://c4doevefkobi5" path="res://player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b7nedbo06ouym" path="res://Art/Jumping2-.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://cwjdpwivckf6g" path="res://Art/Character.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://cq7fjo6waou4x" path="res://Art/Sword_1-.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dk24enbxohk4t" path="res://Art/Walk.png" id="6_2hs0m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sweqy")
+}],
+"loop": true,
+"name": &"sword",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2hs0m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 110.0
+height = 260.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(262, 403)
+script = ExtResource("1_sweqy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"sword"
+frame_progress = 0.478819
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_onrkg")
